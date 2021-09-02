@@ -12,13 +12,11 @@ class CustomView(
     attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
 
-    val binding: LayoutCustomLayoutBinding
+    private var binding: LayoutCustomLayoutBinding = LayoutCustomLayoutBinding.bind(
+        View.inflate(context, R.layout.layout_custom_layout, this)
+    )
 
     init {
-
-        binding = LayoutCustomLayoutBinding.bind(
-            View.inflate(context, R.layout.layout_custom_layout, this)
-        )
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomView, INIT_VALUE, INIT_VALUE)
         binding.displayImage.setImageResource(
